@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footerCategory"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Итог"
+        android:id="@+id/Summary"
+       />
+
+    <TextView
+        android:id="@+id/carb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Summary"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="carb"
+        android:textSize="21sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginStart="20dp"
+        android:text="белки"
+        android:layout_below="@+id/fat"
+        />
+
+    <TextView
+        android:id="@+id/fat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Summary"
+        android:layout_toRightOf="@+id/carb"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="fats"
+        android:textSize="21sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/carb"
+        android:layout_marginStart="20dp"
+        android:text="жиры"
+        android:layout_below="@+id/fat"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="prot"
+        android:layout_below="@+id/Summary"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/fat"
+        android:id="@+id/protein"
+        android:textSize="21sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="углев."
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/fat"
+        android:layout_below="@+id/protein"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cal"
+        android:layout_below="@+id/Summary"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/protein"
+        android:id="@+id/cal"
+        android:textSize="21sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="ккал."
+        android:id="@+id/text_kkal"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/protein"
+        android:layout_below="@+id/cal"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cal"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/cal"
+        android:id="@+id/count"
+        android:textSize="21sp"/>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text=""
+        android:id="@+id/text_kkal"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/protein"
+        android:layout_below="@+id/cal"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cal"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/cal"
+        android:id="@+id/count"
+        android:textSize="21sp"/>
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_kkal"
+
+        android:text="Очистить список" />
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/remove"
+        android:text="Рассчитать" />
+
+</RelativeLayout>
