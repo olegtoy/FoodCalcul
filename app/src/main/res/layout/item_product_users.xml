@@ -94,22 +94,40 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cal"
+        android:text="weigth"
         android:layout_below="@+id/image_name"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_toRightOf="@+id/cal"
-        android:id="@+id/count"
+        android:id="@+id/weigth"
         android:textSize="21sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="вес"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/cal"
+        android:layout_below="@+id/weigth"
+        />
 
-    <Button
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/weigth"
+        android:layout_alignBottom="@+id/weigth"
+        android:layout_toEndOf="@+id/weigth"
+        android:layout_toRightOf="@+id/weigth"
+        android:text="грам"
+        android:textSize="15sp" />
+   <!-- <Button
         android:id="@+id/AddToList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/count"
-        android:layout_alignBottom="@+id/count"
+        android:layout_alignBaseline="@+id/weigth"
+        android:layout_alignBottom="@+id/weigth"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Удалить" />
+        android:text="Удалить" />-->
 
 </RelativeLayout>

@@ -8,8 +8,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Итог"
+        android:text="Итого:"
         android:id="@+id/Summary"
+        android:textSize="19sp"
        />
 
     <TextView
@@ -96,40 +97,38 @@
         android:layout_below="@+id/cal"
         />
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cal"
+        android:text="weigth"
+        android:layout_below="@+id/Summary"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_toRightOf="@+id/cal"
-        android:id="@+id/count"
+        android:id="@+id/weigthall"
         android:textSize="21sp"/>
-
-
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text=""
-        android:id="@+id/text_kkal"
+        android:text="вес"
+        android:id="@+id/text_weigth"
         android:layout_marginStart="20dp"
-        android:layout_toRightOf="@+id/protein"
+        android:layout_toRightOf="@+id/cal"
         android:layout_below="@+id/cal"
         />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cal"
+        android:text="грам"
+        android:layout_below="@+id/Summary"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
-        android:layout_toRightOf="@+id/cal"
-        android:id="@+id/count"
-        android:textSize="21sp"/>
+        android:layout_toRightOf="@+id/weigthall"
 
+        android:textSize="18sp"/>
     <Button
         android:id="@+id/remove"
         android:layout_width="fill_parent"

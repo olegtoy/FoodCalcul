@@ -6,6 +6,7 @@ package com.codingdemos.tablayout.User_product;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class UserAdapter extends CursorAdapter {
         holder.fats    =   (TextView)  view.findViewById(R.id.fat);
         holder.prot    =   (TextView)  view.findViewById(R.id.protein);
         holder.cal   =   (TextView)  view.findViewById(R.id.cal);
-        holder.count=(TextView)  view.findViewById(R.id.count);
+        holder.weigth=(TextView)  view.findViewById(R.id.weigth);
         view.setTag(holder);
         return view;
     }
@@ -48,19 +49,36 @@ public class UserAdapter extends CursorAdapter {
         } else {
             view.setBackgroundResource(R.drawable.item_list_backgroundcolor2);
         }*/
+        double weigth_product=cursor.getDouble(cursor.getColumnIndex(Product.KEY_weigth));
+        double carbhydrates=weigth_product*cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates))/100;
+        double fat=weigth_product*cursor.getDouble(cursor.getColumnIndex(Product.KEY_fat))/100;
+        double protein=weigth_product*cursor.getDouble(cursor.getColumnIndex(Product.KEY_protein))/100;
+        double cal=weigth_product*cursor.getDouble(cursor.getColumnIndex(Product.KEY_Cal))/100;
+
 
         ViewHolder holder  =   (ViewHolder)    view.getTag();
         holder.image_name.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
-        holder.carb.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_carbhydrates)));
+       /* holder.carb.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_carbhydrates)));
         holder.fats.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_fat)));
         holder.prot.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_protein)));
-//       holder.count.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_Cal)));
-  //      holder.count.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_count)));
+        holder.cal.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_Cal)));*/
+        holder.carb.setText(Double.toString(carbhydrates));
+        holder.fats.setText(Double.toString(fat));
+        holder.prot.setText(Double.toString(protein));
+        holder.cal.setText(Double.toString(cal));
+
+        holder.weigth.setText(Double.toString(weigth_product));
+       /* Log.d("INDEx",Integer.toString(cursor.getColumnIndex(Product.KEY_name)));
+        Log.d("INDEx",Integer.toString(cursor.getColumnIndex(Product.KEY_carbhydrates)));
+        Log.d("INDEx",Integer.toString(cursor.getColumnIndex(Product.KEY_fat)));
+        Log.d("INDEx",Integer.toString(cursor.getColumnIndex(Product.KEY_protein)));
+        Log.d("INDEx",Integer.toString(cursor.getColumnIndex("fat")));
+  //      holder.count.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_count)));*/
 
     }
 
     static class ViewHolder {
-        TextView image_name, carb,fats,prot,count,cal;
+        TextView image_name, carb,fats,prot,weigth,cal;
 
     }
 }

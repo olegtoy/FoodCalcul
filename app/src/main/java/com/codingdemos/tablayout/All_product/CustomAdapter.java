@@ -31,6 +31,7 @@ public class CustomAdapter extends CursorAdapter {
     public Product productselect;
     private LayoutInflater mInflater;
     UserProductRepo userProductRepo;
+
     public CustomAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -39,7 +40,7 @@ public class CustomAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         View view = mInflater.inflate(R.layout.item_product, parent, false);
-        ViewHolder holder = new ViewHolder();
+        final ViewHolder holder = new ViewHolder();
         holder.image_name = (TextView) view.findViewById(R.id.image_name);
         holder.carb = (TextView) view.findViewById(R.id.carb);
         holder.fats = (TextView) view.findViewById(R.id.fat);
@@ -50,75 +51,73 @@ public class CustomAdapter extends CursorAdapter {
         return view;
     }
 
+    Double weigth;
     Button btn;
 
     @Override
-    public void bindView(View view, final Context context, Cursor cursor) {
-        ViewHolder holder = (ViewHolder) view.getTag();
+    public void bindView(View view2, final Context context, Cursor cursor) {
+        ViewHolder holder = (ViewHolder) view2.getTag();
         String name = cursor.getString(cursor.getColumnIndex(Product.KEY_name));
         Double carb = cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
         Double fat = cursor.getDouble(cursor.getColumnIndex(Product.KEY_fat));
         Double prot = cursor.getDouble(cursor.getColumnIndex(Product.KEY_protein));
-        String cal=cursor.getString(cursor.getColumnIndex(Product.KEY_Cal));
-        Double count = 0.0;
-        Log.d("...", "id = " + name);
-        Log.d("...", "id = " + carb);
-        Log.d("...", "id = " + fat);
-        Log.d("...", "id = " + prot);
-        Log.d("...", "id = " + cal);
+        Double cal = cursor.getDouble(cursor.getColumnIndex(Product.KEY_Cal));
+
         holder.image_name.setText(name);
         holder.carb.setText(carb.toString());
         holder.fats.setText(fat.toString());
         holder.prot.setText(prot.toString());
         holder.cal.setText(cal.toString());
 
-        Product temp = new Product(name, carb, fat, prot,count);
-        productArrayList.add(temp);
+        boolean flag = false;
+        Product temp = new Product(name, carb, fat, prot, cal);
+        for (int i = 0; i < productArrayList.size(); i++) {
+            if (productArrayList.get(i).getName().equals(temp.getName())) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag == false) {
+            productArrayList.add(temp);
+        }
 
-        btn=view.findViewById(R.id.AddToList);
+        final EditText editText = (EditText) view2.findViewById(R.id.weigth);
+
+        btn = view2.findViewById(R.id.AddToList);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // weigth=Double.parseDouble(holder.count.getText().toString());
+
                 View parent_row = (View) view.getParent();
                 ListView lv = (ListView) parent_row.getParent();
                 final int position = lv.getPositionForView(parent_row);
-                Product product=productArrayList.get(position);
 
-                UsersDBhelper usersDBhelper=new UsersDBhelper(context);
+                Product product = productArrayList.get(position);
+                UsersDBhelper usersDBhelper = new UsersDBhelper(context);
                 SQLiteDatabase db = usersDBhelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
+
+
                 values.put(Product.KEY_name, product.getName());
+                Log.d("calll344444444lll", product.getName());
                 values.put(Product.KEY_carbhydrates, product.getCarbohydrates());
                 values.put(Product.KEY_fat, product.getFat());
                 values.put(Product.KEY_protein, product.getProtein());
                 values.put(Product.KEY_Cal, product.getCal());
-                values.put(Product.KEY_count, product.getCount());
+                double weigth;
+                if (!editText.getText().toString().equals(null) )
+                    weigth = Double.parseDouble(editText.getText().toString());
+                else weigth = 0.0;
+                values.put(Product.KEY_weigth, weigth);
                 db.insert(Product.TABLE2, null, values);
                 db.close();
-                notifyDataSetChanged();
             }
         });
-/*
-        btn = view.findViewById(R.id.AddToList);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("...", "ad3333dd = ");
 
-                View parent_row = (View) v.getParent();
-                ListView lv = (ListView) parent_row.getParent();
-                final int position = lv.getPositionForView(parent_row);
-               *//* Log.d("...", "position = " + position);
-                Log.d("...", "id = " + getItemId(position));
-                Product pr = productArrayList.get(position);
-                productselect = pr;*//*
-       *//*       CallFragment cl=new CallFragment();
-               Log.d("444", productArrayList.get(position).getName());
-               cl.ADDDDD(productArrayList.get(position));*//*
-            }
-        });*/
     }
-     static class ViewHolder {
+
+    static class ViewHolder {
         TextView image_name, carb, fats, prot, cal;
         EditText count;
 

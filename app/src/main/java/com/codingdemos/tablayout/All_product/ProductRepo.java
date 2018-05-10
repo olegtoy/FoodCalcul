@@ -45,6 +45,8 @@ private  UsersDBhelper dbuser;
                 Product.KEY_fat + "," +
                 Product.KEY_protein + "," +
                 Product.KEY_Cal+
+
+
                 " FROM " + Product.TABLE;
 
 
@@ -62,6 +64,7 @@ private  UsersDBhelper dbuser;
 
     public void addProduct(Product product) {
         Log.d("...", "ad3333ппппппппппdd = ");
+
         SQLiteDatabase dbuserSQ = dbuser.getReadableDatabase();
         ContentValues values = new ContentValues();
         Log.d("...", "add = " + product.getName());
@@ -70,7 +73,7 @@ private  UsersDBhelper dbuser;
         values.put(Product.KEY_fat, product.getFat());
         values.put(Product.KEY_protein, product.getProtein());
         values.put(Product.KEY_Cal, product.getCal());
-        values.put(Product.KEY_count, product.getCount());
+        values.put(Product.KEY_weigth, product.getWeigth());
         dbuserSQ.insert(Product.TABLE2, null, values);
         dbuserSQ.close();
     }
@@ -82,7 +85,8 @@ private  UsersDBhelper dbuser;
                 Product.KEY_name + "," +
                 Product.KEY_carbhydrates + "," +
                 Product.KEY_fat + "," +
-                Product.KEY_protein +
+                Product.KEY_protein +","+
+                Product.KEY_Cal +
                 " FROM " + Product.TABLE+
                 " WHERE " +  Product.KEY_name + "  LIKE  '%" +search + "%' "
                 ;

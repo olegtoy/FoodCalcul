@@ -21,14 +21,14 @@ import java.io.OutputStream;
 public class UsersDBhelper extends SQLiteOpenHelper {
     private static String DB_NAME = "UsersDB.db";
     private static String DB_PATH = "";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION =20;
 
     private SQLiteDatabase mDataBase;
     private final Context mContext;
     private boolean mNeedUpdate = true;
 
 
-    public  void addProduct(Product product) {
+/*    public  void addProduct(Product product) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
@@ -36,11 +36,11 @@ public class UsersDBhelper extends SQLiteOpenHelper {
         values.put(Product.KEY_carbhydrates, product.getCarbohydrates());
         values.put(Product.KEY_fat, product.getFat());
         values.put(Product.KEY_protein, product.getProtein());
-        values.put(Product.KEY_Cal, product.getCal());
+        values.put(Product.KEY_kal, product.getCal());
         values.put(Product.KEY_count, product.getCount());
         db.insert(Product.TABLE2, null, values);
         db.close();
-    }
+    }*/
     public UsersDBhelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         if (android.os.Build.VERSION.SDK_INT >= 17)
@@ -62,7 +62,7 @@ public class UsersDBhelper extends SQLiteOpenHelper {
 
             copyDataBase();
 
-            mNeedUpdate = false;
+            mNeedUpdate = true;
         }
     }
 

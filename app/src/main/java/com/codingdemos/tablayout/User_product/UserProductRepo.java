@@ -25,8 +25,7 @@ public class UserProductRepo {
 
     public void removeAll()
     {
-        // db.delete(String tableName, String whereClause, String[] whereArgs);
-        // If whereClause is null, it will delete all rows.
+
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // helper is object extends SQLiteOpenHelper
         db.delete(Product.TABLE2, null, null);
     }
@@ -39,7 +38,8 @@ public class UserProductRepo {
                 Product.KEY_carbhydrates + "," +
                 Product.KEY_fat + "," +
                 Product.KEY_protein +"," +
-                Product.KEY_count +
+                Product.KEY_Cal +
+                ","+ Product.KEY_weigth+
                 " FROM " + Product.TABLE2;
 
 
@@ -57,7 +57,7 @@ public class UserProductRepo {
 
     }
 
-    public  void addProduct(Product product) {
+ /*   public  void addProduct(Product product) {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -66,10 +66,10 @@ public class UserProductRepo {
         values.put(Product.KEY_fat, product.getFat());
         values.put(Product.KEY_protein, product.getProtein());
         values.put(Product.KEY_Cal, product.getCal());
-        values.put(Product.KEY_count, product.getCount());
+        values.put(Product.KEY_weight, product.getWeigth());
         db.insert(Product.TABLE2, null, values);
         db.close();
-    }
+    }*/
 
     public Cursor  getStudentListByKeyword(String search) {
         //Open connection to read only
@@ -80,7 +80,8 @@ public class UserProductRepo {
                 Product.KEY_carbhydrates + "," +
                 Product.KEY_fat + "," +
                 Product.KEY_protein + "," +
-                Product.KEY_count+
+                Product.KEY_Cal+","+
+                Product.KEY_weigth+
                 " FROM " + Product.TABLE2+
                 " WHERE " +  Product.KEY_name + "  LIKE  '%" +search + "%' "
                 ;

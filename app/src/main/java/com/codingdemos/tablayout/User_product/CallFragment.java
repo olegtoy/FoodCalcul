@@ -48,20 +48,6 @@ public class CallFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        productRepo = new ProductRepo(getActivity());
-        cursor=productRepo.getStudentList();
-        customAdapter = new CustomAdapter(CallFragment.this.getActivity(),  cursor, 0);
-        listView.setAdapter(customAdapter);
-        customAdapter.notifyDataSetChanged();
-        cursor=productRepo.getStudentList();
-        listView.setAdapter(customAdapter);
-        customAdapter.notifyDataSetChanged();
-
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_calls, menu);
         SearchManager manager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);

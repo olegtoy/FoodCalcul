@@ -16,14 +16,14 @@ public class Product {
     public static final String KEY_protein = "Protein";
     public static final String KEY_name = "Name";
     public static final String KEY_Cal = "Cal";
-    public static final String KEY_count = "Count";
+    public static final String KEY_weigth = "weigth";
 
     String Name;
     double Carbohydrates;
     double Fat;
     double Protein;
     double Cal;
-    double Count;
+    double Weigth;
     int Id;
 
     public double getCal() {
@@ -34,8 +34,8 @@ public class Product {
         return Carbohydrates;
     }
 
-    public double getCount() {
-        return Count;
+    public double getWeigth() {
+        return Weigth;
     }
 
     public double getFat() {
@@ -57,13 +57,21 @@ public class Product {
         this.Fat = Fat;
         this.Protein = Protein;
     }
-    public Product(String Name, double Carbohydrates, double Fat, double Protein,double Cal,double Count)
+    public Product(String Name, double Carbohydrates, double Fat, double Protein,double Cal,double weigth)
     {
         this.Name = Name;
         this.Carbohydrates = Carbohydrates;
         this.Fat = Fat;
         this.Protein = Protein;
-        this.Count=Count;
+        this.Weigth=weigth;
+        this.Cal=Cal;
+    }
+    public Product(String Name, double Carbohydrates, double Fat, double Protein,double Cal)
+    {
+        this.Name = Name;
+        this.Carbohydrates = Carbohydrates;
+        this.Fat = Fat;
+        this.Protein = Protein;
         this.Cal=Cal;
     }
     public Product(){

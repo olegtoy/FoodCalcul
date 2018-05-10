@@ -44,43 +44,45 @@ public class StatusFragment extends Fragment {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         View v = inflater.inflate(R.layout.fragment_call, container, false);
-        ViewGroup footer = (ViewGroup)inflater.inflate(R.layout.status_footer,listView,false);
+        ViewGroup footer = (ViewGroup) inflater.inflate(R.layout.status_footer, listView, false);
         userProductRepo = new UserProductRepo(getActivity());
         cursor = userProductRepo.getStudentList();
         userAdapter = new UserAdapter(StatusFragment.this.getActivity(), cursor, 0);
-        cursorall=userProductRepo.getStudentList();
+        cursorall = userProductRepo.getStudentList();
 
-        double carb=0;
-        double fat=0;
-        double protein=0;
-        double kal=0;
+        double carb = 0;
+        double fat = 0;
+        double protein = 0;
+        double kal = 0;
+        double weigth = 0;
 
-        if(cursorall!=null){
-        for (int i = 0; i <cursorall.getCount() ; i++) {
-            carb += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
-            fat += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_fat));
-            protein += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_protein));
-//            kal+=cursorall.getDouble(cursor.getColumnIndex(Product.KEY_Cal));
-            cursorall.moveToNext();
+        if (cursorall != null) {
+            for (int i = 0; i < cursorall.getCount(); i++) {
+                carb += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
+                fat += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_fat));
+                protein += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_protein));
+                kal += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_Cal));
+                weigth += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_weigth));
+                cursorall.moveToNext();
+            }
         }
-        }
 
 
-        final TextView carb_textView=(TextView)footer.findViewById(R.id.carb);
-        final TextView fat_textView=(TextView)footer.findViewById(R.id.fat);
-        final TextView protein_textView=(TextView)footer.findViewById(R.id.protein);
-      //  TextView kal_textView=(TextView)footer.findViewById(R.id.carb);
-
+        final TextView carb_textView = (TextView) footer.findViewById(R.id.carb);
+        final TextView fat_textView = (TextView) footer.findViewById(R.id.fat);
+        final TextView protein_textView = (TextView) footer.findViewById(R.id.protein);
+        final TextView kal_textView = (TextView) footer.findViewById(R.id.cal);
+        final TextView weigth_textView = (TextView) footer.findViewById(R.id.weigthall);
 
         carb_textView.setText(Double.toString(carb));
         fat_textView.setText(Double.toString(fat));
         protein_textView.setText(Double.toString(protein));
-        //kal_textView.setText(Double.toString(carb));
+        kal_textView.setText(Double.toString(kal));
 
         listView = (ListView) v.findViewById(R.id.lstStudent);
         listView.setAdapter(userAdapter);
 
-        Button remove_list=footer.findViewById(R.id.remove);
+        Button remove_list = footer.findViewById(R.id.remove);
         remove_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,11 +91,14 @@ public class StatusFragment extends Fragment {
                 carb_textView.setText("0");
                 fat_textView.setText("0");
                 protein_textView.setText("0");
+                kal_textView.setText("0");
+                weigth_textView.setText("0");
+
 
             }
 
         });
-        Button calculate=footer.findViewById(R.id.calculate);
+        Button calculate = footer.findViewById(R.id.calculate);
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,19 +107,24 @@ public class StatusFragment extends Fragment {
                 cursor = userProductRepo.getStudentList();
                 userAdapter = new UserAdapter(StatusFragment.this.getActivity(), cursor, 0);
                 listView.setAdapter(userAdapter);
-                cursorall=userProductRepo.getStudentList();
+                cursorall = userProductRepo.getStudentList();
 
-                double carb=0;
-                double fat=0;
-                double protein=0;
-                double kal=0;
+                double carb = 0;
+                double fat = 0;
+                double protein = 0;
+                double kal = 0;
+                double weigth = 0;
+                if (cursorall != null) {
+                    for (int i = 0; i < cursorall.getCount(); i++) {
 
-                if(cursorall!=null){
-                    for (int i = 0; i <cursorall.getCount() ; i++) {
-                        carb += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
-                        fat += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_fat));
-                        protein += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_protein));
-//            kal+=cursorall.getDouble(cursor.getColumnIndex(Product.KEY_Cal));
+                        double weigth_temp=cursorall.getDouble(cursor.getColumnIndex(Product.KEY_weigth));
+                        Log.d("weig",Double.toString(weigth_temp));
+                        weigth += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_weigth));
+                        carb += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates))/100*weigth_temp;
+                        fat += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_fat))/100*weigth_temp;
+                        protein += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_protein))/100*weigth_temp;
+                        kal += cursorall.getDouble(cursor.getColumnIndex(Product.KEY_Cal))/100*weigth_temp;
+
                         cursorall.moveToNext();
                     }
                 }
@@ -122,8 +132,8 @@ public class StatusFragment extends Fragment {
                 carb_textView.setText(Double.toString(carb));
                 fat_textView.setText(Double.toString(fat));
                 protein_textView.setText(Double.toString(protein));
-                //kal_textView.setText(Double.toString(carb));
-
+                kal_textView.setText(Double.toString(kal));
+                weigth_textView.setText(Double.toString(weigth));
             }
 
         });
@@ -170,5 +180,5 @@ public class StatusFragment extends Fragment {
         });
 */
 
-    }
+}
 
