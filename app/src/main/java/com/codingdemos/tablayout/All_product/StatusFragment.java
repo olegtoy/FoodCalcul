@@ -88,11 +88,11 @@ public class StatusFragment extends Fragment {
             public void onClick(View view) {
                 listView.setAdapter(null);
                 userProductRepo.removeAll();
-                carb_textView.setText("0");
-                fat_textView.setText("0");
-                protein_textView.setText("0");
-                kal_textView.setText("0");
-                weigth_textView.setText("0");
+                carb_textView.setText("0.0");
+                fat_textView.setText("0.0");
+                protein_textView.setText("0.0");
+                kal_textView.setText("0.0");
+                weigth_textView.setText("0.0");
 
 
             }
@@ -129,11 +129,11 @@ public class StatusFragment extends Fragment {
                     }
                 }
 
-                carb_textView.setText(String.format("%.2f",carb));
-                fat_textView.setText(String.format("%.2f",fat));
-                protein_textView.setText(String.format("%.2f",protein));
-                kal_textView.setText(String.format("%.2f",kal));
-                weigth_textView.setText(String.format("%.2f",weigth));
+                carb_textView.setText(String.format("%.1f",carb));
+                fat_textView.setText(String.format("%.1f",fat));
+                protein_textView.setText(String.format("%.1f",protein));
+                kal_textView.setText(String.format("%.1f",kal));
+                weigth_textView.setText(String.format("%.1f",weigth));
             }
 
         });
@@ -149,10 +149,10 @@ public class StatusFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_status) {
+   /*     if (item.getItemId() == R.id.action_status) {
             Toast.makeText(getActivity(), "Clicked on " + item.getTitle(), Toast.LENGTH_SHORT)
                     .show();
-        }
+        }*/
         return true;
     }
 /*

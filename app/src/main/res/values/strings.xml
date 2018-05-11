@@ -1,38 +1,18 @@
 <resources>
-  <string name="app_name">Tablayout</string>
+  <string name="app_name">Пищевая ценность продуктов</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string-array name="names">
     <item>Грибы</item>
-    <item>Колбасные изделия</item>
+    <item>Мясные продукты и колбасы</item>
     <item>Крупы и каши</item>
-    <item>Масла и жиры</item>
     <item>Молочные продукты</item>
-    <item>Мука и мучные изделия</item>
-    <item>Мясные продукты</item>
+    <item>Мучные изделия и сладости</item>
     <item>Овощи и зелень</item>
     <item>Орехи и сухофрукты</item>
     <item>Рыба и морепродукты</item>
-    <item>Снеки и чипсы</item>
-    <item>Сыры и творог</item>
-    <item>Сырье и приправы</item>
-    <item>Фрукты</item>
-    <item>Хлебобулочные изделия</item>
-    <item>Ягоды</item>
-    <item>Яйца</item>
-    <item>Кодитерские изделия и сладости</item>
-    <item>Мороженое</item>
-    <item>Торты</item>
-    <item>Шоколад</item>
-    <item>Напитки алкогольные</item>
-    <item>Напитки безалкогольные</item>
-    <item>Соки и компоты</item>
-    <item>Салаты</item>
-    <item>Первые блюда</item>
-    <item>McDonalds</item>
-    <item>Японская кухня</item>
-    <item>Детское питание</item>
-    <item>Спортивное и дополнительное питание</item>
+    <item>Фрукты и ягоды</item>
+    <item>Напитки</item>
   </string-array>
 </resources>

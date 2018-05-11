@@ -3,8 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragmentchat"
-    tools:context="com.codingdemos.tablayout.ChatFragment"
+    tools:context="com.codingdemos.tablayout.User_product.ChatFragment"
     >
+
+  <!-- TODO: Update blank fragment layout -->
+  <ListView android:id="@+id/listprod2"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"/>
 
 
   <ListView android:id="@android:id/list"

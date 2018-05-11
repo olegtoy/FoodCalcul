@@ -7,10 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -47,6 +49,9 @@ public class CallFragment extends Fragment {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
 
+
+
+
         int categor_position=0;
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -66,7 +71,7 @@ public class CallFragment extends Fragment {
             int Category = cursor.getInt(cursor.getColumnIndex(Product.KEY_category));
             Log.d("categor2333",Integer.toString(Category));
 
-            if (Category == categor_position) {
+            if (Category-1 == categor_position||categor_position==111) {
                 String name = cursor.getString(cursor.getColumnIndex(Product.KEY_name));
                 Double carb = cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
                 Double fat = cursor.getDouble(cursor.getColumnIndex(Product.KEY_fat));
@@ -94,8 +99,12 @@ public class CallFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
         inflater.inflate(R.menu.menu_calls, menu);
         SearchManager manager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        MenuItem item = menu.findItem(R.id.search_chat);
+if(item!=null)        item.setVisible(false);
         SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
         search.setSearchableInfo(manager.getSearchableInfo(getActivity().getComponentName()));
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -145,7 +154,9 @@ public class CallFragment extends Fragment {
 
         });
 
+
     }
+
 
 
 

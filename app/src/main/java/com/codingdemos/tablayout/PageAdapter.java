@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.codingdemos.tablayout.All_product.StatusFragment;
 import com.codingdemos.tablayout.User_product.CallFragment;
+import com.codingdemos.tablayout.User_product.ChatFragment;
 
 /**
  * Created by abdalla on 2/18/18.

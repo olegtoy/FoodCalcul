@@ -29,19 +29,19 @@
       android:id="@+id/tabChats"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Chats" />
+      android:text="Таблица продуктов" />
 
     <android.support.design.widget.TabItem
       android:id="@+id/tabStatus"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Status" />
+      android:text="Мой рацион" />
 
-    <android.support.design.widget.TabItem
+  <!--  <android.support.design.widget.TabItem
       android:id="@+id/tabCalls"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Calls" />
+      android:text="Calls" />-->
 
   </android.support.design.widget.TabLayout>
 

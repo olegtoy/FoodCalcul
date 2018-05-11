@@ -11,6 +11,15 @@
         android:id="@+id/image_name"
         android:textSize="21sp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/image_name"
+        android:layout_alignBottom="@+id/image_name"
+        android:layout_toEndOf="@+id/image_name"
+        android:layout_toRightOf="@+id/image_name"
+        android:text="(100г.)"
+        android:textSize="15sp" />
 
      <TextView
         android:layout_width="wrap_content"
@@ -98,9 +107,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:hint="вес" />
+        android:hint="вес(грам)" />
 
     <Button
         android:id="@+id/AddToList"

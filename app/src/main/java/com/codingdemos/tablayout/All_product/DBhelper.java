@@ -20,7 +20,7 @@ import java.io.OutputStream;
 public class DBhelper extends SQLiteOpenHelper {
     private static String DB_NAME = "FoodDB.db";
     private static String DB_PATH = "";
-    private static final int DB_VERSION = 13;
+    private static final int DB_VERSION = 14;
 
     private SQLiteDatabase mDataBase;
     private final Context mContext;

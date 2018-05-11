@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Итого:"
+        android:text="Итого (в граммах):"
+        android:textStyle="bold"
         android:id="@+id/Summary"
         android:textSize="19sp"
        />
@@ -19,6 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Summary"
         android:layout_marginStart="20dp"
+        android:textStyle="bold"
+
         android:layout_marginTop="10dp"
         android:text="carb"
         android:textSize="21sp" />
@@ -37,6 +40,8 @@
         android:id="@+id/fat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+
         android:layout_below="@+id/Summary"
         android:layout_toRightOf="@+id/carb"
         android:layout_marginStart="20dp"
@@ -60,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="prot"
+        android:textStyle="bold"
         android:layout_below="@+id/Summary"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
@@ -83,6 +89,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_toRightOf="@+id/protein"
+        android:textStyle="bold"
         android:id="@+id/cal"
         android:textSize="21sp"/>
 
@@ -101,8 +108,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="weigth"
+        android:text="0.0"
         android:layout_below="@+id/Summary"
+        android:textStyle="bold"
+
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_toRightOf="@+id/cal"
@@ -119,28 +128,19 @@
         android:layout_toRightOf="@+id/cal"
         android:layout_below="@+id/cal"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="грам"
-        android:layout_below="@+id/Summary"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_toRightOf="@+id/weigthall"
 
-        android:textSize="18sp"/>
-    <Button
-        android:id="@+id/remove"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_kkal"
 
-        android:text="Очистить список" />
     <Button
         android:id="@+id/calculate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/remove"
+        android:layout_below="@+id/text_kkal"
         android:text="Рассчитать" />
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calculate"
+        android:text="Очистить список" />
 
 </RelativeLayout>

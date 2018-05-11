@@ -26,20 +26,18 @@ import java.util.ArrayList;
 import javax.xml.transform.dom.DOMLocator;
 
 public class CustomAdapter extends CursorAdapter {
-    TextView image_name, carb, fats, prot, cal;
     public ArrayList<Product> productArrayList = new ArrayList<Product>();
-    public Product productselect;
     private LayoutInflater mInflater;
-    UserProductRepo userProductRepo;
-int category_position;
+    int category_position;
 
     public CustomAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-    public CustomAdapter(Context context, Cursor c, int flags,int category) {
+
+    public CustomAdapter(Context context, Cursor c, int flags, int category) {
         super(context, c, flags);
-        category_position=category;
+        category_position = category;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -52,22 +50,18 @@ int category_position;
         holder.carb = (TextView) view.findViewById(R.id.carb);
         holder.fats = (TextView) view.findViewById(R.id.fat);
         holder.prot = (TextView) view.findViewById(R.id.protein);
-        holder.cal = (TextView) view.findViewById(R.id.cal);
+        holder.cal =  (TextView) view.findViewById(R.id.cal);
         holder.count = (EditText) view.findViewById(R.id.weigth);
         view.setTag(holder);
         return view;
     }
-
-    Double weigth;
     Button btn;
-
     @Override
     public void bindView(View view2, final Context context, Cursor cursor) {
         ViewHolder holder = (ViewHolder) view2.getTag();
 
         int Category = cursor.getInt(cursor.getColumnIndex(Product.KEY_category));
-        if (Category == category_position)
-        {
+        if (Category == category_position) {
             String name = cursor.getString(cursor.getColumnIndex(Product.KEY_name));
             Double carb = cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
             Double fat = cursor.getDouble(cursor.getColumnIndex(Product.KEY_fat));
@@ -98,8 +92,6 @@ int category_position;
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // weigth=Double.parseDouble(holder.count.getText().toString());
-
                     View parent_row = (View) view.getParent();
                     ListView lv = (ListView) parent_row.getParent();
                     final int position = lv.getPositionForView(parent_row);
@@ -111,7 +103,6 @@ int category_position;
 
 
                     values.put(Product.KEY_name, product.getName());
-                    Log.d("calll344444444lll", product.getName());
                     values.put(Product.KEY_carbhydrates, product.getCarbohydrates());
                     values.put(Product.KEY_fat, product.getFat());
                     values.put(Product.KEY_protein, product.getProtein());
