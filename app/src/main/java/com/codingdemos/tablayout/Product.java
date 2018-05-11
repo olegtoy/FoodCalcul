@@ -17,6 +17,8 @@ public class Product {
     public static final String KEY_name = "Name";
     public static final String KEY_Cal = "Cal";
     public static final String KEY_weigth = "weigth";
+    public static final String KEY_category = "Category";
+
 
     String Name;
     double Carbohydrates;

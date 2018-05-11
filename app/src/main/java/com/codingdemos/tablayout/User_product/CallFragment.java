@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -23,6 +25,10 @@ import com.codingdemos.tablayout.MainActivity;
 import com.codingdemos.tablayout.Product;
 import com.codingdemos.tablayout.R;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class CallFragment extends Fragment {
     Button addtoList;
     private CustomAdapter customAdapter;
@@ -31,19 +37,58 @@ public class CallFragment extends Fragment {
     ProductRepo productRepo;
     private final static String TAG= MainActivity.class.getName().toString();
     Button btn;
+    private int selectCategory;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
+
+        int categor_position=0;
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+             categor_position = bundle.getInt("pos", 0);
+        }
+        Log.d("categor2",Integer.toString(categor_position));
+
         final View v = inflater.inflate(R.layout.fragment_call, container, false);
         productRepo = new ProductRepo(getActivity());
         cursor=productRepo.getStudentList();
-        customAdapter = new CustomAdapter(CallFragment.this.getActivity(),  cursor, 0);
-        listView = (ListView) v.findViewById(R.id.lstStudent);
-        listView.setAdapter(customAdapter);
-        customAdapter.notifyDataSetChanged();
+
+        ArrayList<Product> arraylist=new ArrayList<Product>();
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast())
+        {
+            int Category = cursor.getInt(cursor.getColumnIndex(Product.KEY_category));
+            Log.d("categor2333",Integer.toString(Category));
+
+            if (Category == categor_position) {
+                String name = cursor.getString(cursor.getColumnIndex(Product.KEY_name));
+                Double carb = cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
+                Double fat = cursor.getDouble(cursor.getColumnIndex(Product.KEY_fat));
+                Double prot = cursor.getDouble(cursor.getColumnIndex(Product.KEY_protein));
+                Double cal = cursor.getDouble(cursor.getColumnIndex(Product.KEY_Cal));
+                arraylist.add(new Product(name,carb,fat,prot,cal));
+            }
+            cursor.moveToNext();
+        }
+
+
+        for (int i = 0; i <arraylist.size() ; i++) {
+
+            Log.d("prod",arraylist.get(i).getName());
+        }
+
+        AdapterProduct adapterProduct=new AdapterProduct(CallFragment.this.getActivity(),R.layout.item_product,arraylist);
+       // customAdapter = new CustomAdapter(CallFragment.this.getActivity(),  cursor, 0,categor_position);
+        listView = (ListView) v.findViewById(R.id.listprod);
+       // listView.setAdapter(customAdapter);
+        listView.setAdapter(adapterProduct);
+//        customAdapter.notifyDataSetChanged();
         return v;
     }
 
@@ -73,7 +118,27 @@ public class CallFragment extends Fragment {
                 Log.d(TAG, "onQueryTextChange ");
                 cursor=productRepo.getStudentListByKeyword(s);
                 if (cursor!=null){
-                    customAdapter.swapCursor(cursor);
+
+                    ArrayList<Product> arraylist=new ArrayList<Product>();
+
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast())
+                    {
+//                        int Category = cursor.getInt(cursor.getColumnIndex(Product.KEY_category));
+                      //  Log.d("categor2333",Integer.toString(Category));
+
+                            String name = cursor.getString(cursor.getColumnIndex(Product.KEY_name));
+                            Double carb = cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
+                            Double fat = cursor.getDouble(cursor.getColumnIndex(Product.KEY_fat));
+                            Double prot = cursor.getDouble(cursor.getColumnIndex(Product.KEY_protein));
+                            Double cal = cursor.getDouble(cursor.getColumnIndex(Product.KEY_Cal));
+                            arraylist.add(new Product(name,carb,fat,prot,cal));
+
+                        cursor.moveToNext();
+                    }
+                    AdapterProduct adapterProduct=new AdapterProduct(CallFragment.this.getActivity(),R.layout.item_product,arraylist);
+                    listView.setAdapter(adapterProduct);
+
                 }
                 return false;
             }
@@ -81,7 +146,6 @@ public class CallFragment extends Fragment {
         });
 
     }
-
 
 
 

@@ -79,7 +79,7 @@ public class StatusFragment extends Fragment {
         protein_textView.setText(Double.toString(protein));
         kal_textView.setText(Double.toString(kal));
 
-        listView = (ListView) v.findViewById(R.id.lstStudent);
+        listView = (ListView) v.findViewById(R.id.listprod);
         listView.setAdapter(userAdapter);
 
         Button remove_list = footer.findViewById(R.id.remove);
@@ -129,11 +129,11 @@ public class StatusFragment extends Fragment {
                     }
                 }
 
-                carb_textView.setText(Double.toString(carb));
-                fat_textView.setText(Double.toString(fat));
-                protein_textView.setText(Double.toString(protein));
-                kal_textView.setText(Double.toString(kal));
-                weigth_textView.setText(Double.toString(weigth));
+                carb_textView.setText(String.format("%.2f",carb));
+                fat_textView.setText(String.format("%.2f",fat));
+                protein_textView.setText(String.format("%.2f",protein));
+                kal_textView.setText(String.format("%.2f",kal));
+                weigth_textView.setText(String.format("%.2f",weigth));
             }
 
         });

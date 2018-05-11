@@ -18,7 +18,19 @@ public class MainActivity extends AppCompatActivity {
     TabItem tabChats;
     TabItem tabStatus;
     TabItem tabCalls;
+    @Override
+    public void onBackPressed() {
 
+        int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            //additional code
+        } else {
+            getFragmentManager().popBackStack();
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

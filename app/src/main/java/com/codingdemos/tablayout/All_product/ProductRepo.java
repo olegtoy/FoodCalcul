@@ -40,6 +40,7 @@ private  UsersDBhelper dbuser;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  rowid as " +
                 Product.KEY_ROWID + "," +
+                Product.KEY_category+ "," +
                 Product.KEY_name + "," +
                 Product.KEY_carbhydrates + "," +
                 Product.KEY_fat + "," +
@@ -105,6 +106,7 @@ private  UsersDBhelper dbuser;
 
 
     }
+
 
 
 }

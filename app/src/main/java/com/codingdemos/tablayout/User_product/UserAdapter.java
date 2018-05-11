@@ -66,7 +66,6 @@ public class UserAdapter extends CursorAdapter {
         holder.fats.setText(Double.toString(fat));
         holder.prot.setText(Double.toString(protein));
         holder.cal.setText(Double.toString(cal));
-
         holder.weigth.setText(Double.toString(weigth_product));
        /* Log.d("INDEx",Integer.toString(cursor.getColumnIndex(Product.KEY_name)));
         Log.d("INDEx",Integer.toString(cursor.getColumnIndex(Product.KEY_carbhydrates)));
