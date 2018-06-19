@@ -19,9 +19,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.codingdemos.tablayout.All_product.CustomAdapter;
-import com.codingdemos.tablayout.All_product.DBhelper;
 import com.codingdemos.tablayout.All_product.ProductRepo;
 import com.codingdemos.tablayout.MainActivity;
 import com.codingdemos.tablayout.Product;
@@ -32,8 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CallFragment extends Fragment {
-    Button addtoList;
-    private CustomAdapter customAdapter;
     ListView listView;
     Cursor cursor;
     ProductRepo productRepo;
@@ -48,17 +43,11 @@ public class CallFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-
-
-
-
         int categor_position=0;
         Bundle bundle = this.getArguments();
         if (bundle != null) {
              categor_position = bundle.getInt("pos", 0);
         }
-        Log.d("categor2",Integer.toString(categor_position));
-
         final View v = inflater.inflate(R.layout.fragment_call, container, false);
         productRepo = new ProductRepo(getActivity());
         cursor=productRepo.getStudentList();
@@ -69,8 +58,6 @@ public class CallFragment extends Fragment {
         while (!cursor.isAfterLast())
         {
             int Category = cursor.getInt(cursor.getColumnIndex(Product.KEY_category));
-            Log.d("categor2333",Integer.toString(Category));
-
             if (Category-1 == categor_position||categor_position==111) {
                 String name = cursor.getString(cursor.getColumnIndex(Product.KEY_name));
                 Double carb = cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
@@ -82,18 +69,9 @@ public class CallFragment extends Fragment {
             cursor.moveToNext();
         }
 
-
-        for (int i = 0; i <arraylist.size() ; i++) {
-
-            Log.d("prod",arraylist.get(i).getName());
-        }
-
         AdapterProduct adapterProduct=new AdapterProduct(CallFragment.this.getActivity(),R.layout.item_product,arraylist);
-       // customAdapter = new CustomAdapter(CallFragment.this.getActivity(),  cursor, 0,categor_position);
         listView = (ListView) v.findViewById(R.id.listprod);
-       // listView.setAdapter(customAdapter);
         listView.setAdapter(adapterProduct);
-//        customAdapter.notifyDataSetChanged();
         return v;
     }
 
@@ -117,7 +95,7 @@ if(item!=null)        item.setVisible(false);
                 }else{
                     Toast.makeText(CallFragment.this.getActivity(), cursor.getCount() + " records found!",Toast.LENGTH_LONG).show();
                 }
-                customAdapter.swapCursor(cursor);
+               // customAdapter.swapCursor(cursor);
 
                 return false;
             }
@@ -127,22 +105,16 @@ if(item!=null)        item.setVisible(false);
                 Log.d(TAG, "onQueryTextChange ");
                 cursor=productRepo.getStudentListByKeyword(s);
                 if (cursor!=null){
-
                     ArrayList<Product> arraylist=new ArrayList<Product>();
-
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast())
                     {
-//                        int Category = cursor.getInt(cursor.getColumnIndex(Product.KEY_category));
-                      //  Log.d("categor2333",Integer.toString(Category));
-
                             String name = cursor.getString(cursor.getColumnIndex(Product.KEY_name));
                             Double carb = cursor.getDouble(cursor.getColumnIndex(Product.KEY_carbhydrates));
                             Double fat = cursor.getDouble(cursor.getColumnIndex(Product.KEY_fat));
                             Double prot = cursor.getDouble(cursor.getColumnIndex(Product.KEY_protein));
                             Double cal = cursor.getDouble(cursor.getColumnIndex(Product.KEY_Cal));
                             arraylist.add(new Product(name,carb,fat,prot,cal));
-
                         cursor.moveToNext();
                     }
                     AdapterProduct adapterProduct=new AdapterProduct(CallFragment.this.getActivity(),R.layout.item_product,arraylist);

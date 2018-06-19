@@ -1,5 +1,4 @@
 package com.codingdemos.tablayout.All_product;
-
 /**
  * Created by olegtojgildin on 22.04.2018.
  */

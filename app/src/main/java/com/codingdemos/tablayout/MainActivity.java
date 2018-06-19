@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tablayout);
         tabChats = findViewById(R.id.tabChats);
         tabStatus = findViewById(R.id.tabStatus);
-       // tabCalls = findViewById(R.id.tabCalls);
         viewPager = findViewById(R.id.viewPager);
 
         pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());

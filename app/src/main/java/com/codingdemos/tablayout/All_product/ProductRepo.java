@@ -1,5 +1,4 @@
 package com.codingdemos.tablayout.All_product;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,14 +9,12 @@ import com.codingdemos.tablayout.Product;
 import com.codingdemos.tablayout.User_product.UsersDBhelper;
 
 import java.io.IOException;
-
 /**
  * Created by olegtojgildin on 06.05.2018.
  */
-
 public class ProductRepo {
     private DBhelper dbHelper;
-private  UsersDBhelper dbuser;
+    private  UsersDBhelper dbuser;
     public ProductRepo(Context context) {
         dbHelper = new DBhelper(context);
          dbuser=new UsersDBhelper(context);
@@ -91,8 +88,6 @@ private  UsersDBhelper dbuser;
                 " FROM " + Product.TABLE+
                 " WHERE " +  Product.KEY_name + "  LIKE  '%" +search + "%' "
                 ;
-
-
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
 

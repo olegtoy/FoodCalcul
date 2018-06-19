@@ -1,6 +1,4 @@
 package com.codingdemos.tablayout.All_product;
-
-
 import android.app.SearchManager;
 import android.content.Context;
 import android.database.Cursor;
@@ -25,11 +23,6 @@ import com.codingdemos.tablayout.R;
 import com.codingdemos.tablayout.User_product.CallFragment;
 import com.codingdemos.tablayout.User_product.UserAdapter;
 import com.codingdemos.tablayout.User_product.UserProductRepo;
-
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class StatusFragment extends Fragment {
     private UserAdapter userAdapter;
     ListView listView;
@@ -149,36 +142,9 @@ public class StatusFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-   /*     if (item.getItemId() == R.id.action_status) {
-            Toast.makeText(getActivity(), "Clicked on " + item.getTitle(), Toast.LENGTH_SHORT)
-                    .show();
-        }*/
+
         return true;
     }
-/*
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_calls, menu);
-        SearchManager manager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-        SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
-        search.setSearchableInfo(manager.getSearchableInfo(getActivity().getComponentName()));
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-
-                return false;
-            }
-
-        });
-*/
 
 }
 

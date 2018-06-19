@@ -1,9 +1,5 @@
 package com.codingdemos.tablayout.User_product;
 
-/**
- * Created by olegtojgildin on 07.05.2018.
- */
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -25,7 +21,6 @@ public class UserProductRepo {
 
     public void removeAll()
     {
-
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // helper is object extends SQLiteOpenHelper
         db.delete(Product.TABLE2, null, null);
     }
@@ -56,20 +51,6 @@ public class UserProductRepo {
 
 
     }
-
- /*   public  void addProduct(Product product) {
-
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Product.KEY_name, product.getName());
-        values.put(Product.KEY_carbhydrates, product.getCarbohydrates());
-        values.put(Product.KEY_fat, product.getFat());
-        values.put(Product.KEY_protein, product.getProtein());
-        values.put(Product.KEY_Cal, product.getCal());
-        values.put(Product.KEY_weight, product.getWeigth());
-        db.insert(Product.TABLE2, null, values);
-        db.close();
-    }*/
 
     public Cursor  getStudentListByKeyword(String search) {
         //Open connection to read only

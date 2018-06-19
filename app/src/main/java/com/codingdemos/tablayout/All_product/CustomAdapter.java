@@ -101,12 +101,12 @@ public class CustomAdapter extends CursorAdapter {
                     SQLiteDatabase db = usersDBhelper.getWritableDatabase();
                     ContentValues values = new ContentValues();
 
-
                     values.put(Product.KEY_name, product.getName());
                     values.put(Product.KEY_carbhydrates, product.getCarbohydrates());
                     values.put(Product.KEY_fat, product.getFat());
                     values.put(Product.KEY_protein, product.getProtein());
                     values.put(Product.KEY_Cal, product.getCal());
+
                     double weigth;
                     if (!editText.getText().toString().equals(null))
                         weigth = Double.parseDouble(editText.getText().toString());
@@ -119,10 +119,8 @@ public class CustomAdapter extends CursorAdapter {
 
         }
     }
-
     static class ViewHolder {
         TextView image_name, carb, fats, prot, cal;
         EditText count;
-
     }
 }

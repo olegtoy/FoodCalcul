@@ -27,20 +27,6 @@ public class UsersDBhelper extends SQLiteOpenHelper {
     private final Context mContext;
     private boolean mNeedUpdate = true;
 
-
-/*    public  void addProduct(Product product) {
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Product.KEY_name, product.getName());
-        values.put(Product.KEY_carbhydrates, product.getCarbohydrates());
-        values.put(Product.KEY_fat, product.getFat());
-        values.put(Product.KEY_protein, product.getProtein());
-        values.put(Product.KEY_kal, product.getCal());
-        values.put(Product.KEY_count, product.getCount());
-        db.insert(Product.TABLE2, null, values);
-        db.close();
-    }*/
     public UsersDBhelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         if (android.os.Build.VERSION.SDK_INT >= 17)
